@@ -1,0 +1,96 @@
+
+cnpm install mint-ui -S
+cnpm install moment --save
+cnpm install --save vue-picture-preview
+cnpm install axios --save
+
+--可选
+cnpm i stylus-loader stylus --save
+cnpm install vue-resource
+
+
+
+
+
+---在main.js引入mintUI 即饿了么手机版----
+import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css
+Vue.use(Mint)
+
+
+-----如果做PC端，在main.js引入饿了么电脑版element-ui--
+则需要安装：
+cnpm install element-ui -S
+
+然后在main.js中引入;
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+Vue.use(ElementUI)
+
+
+安装之后再main.js中引入
+--引入Ajax的方式---
+import axios from 'axios'
+
+注意：用axios时，有如下的绑定方式：
+--绑定方式1
+Vue.prototype.$ajax = axios 
+
+--绑定方式2
+Vue.prototype.$http = axios
+
+
+路由
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
+
+
+
+cnpm install vue-mui@2.0.0 --save
+--引入muiUI
+import '../static/mui/css/mui.min.css'  
+
+
+
+
+
+统一参数绑定方式：
+:src :bind 两个绑定动态资源,子父组件也是使用这个传值
+
+--插值表达式:{{变量名}}
+
+ @click 绑定方法
+
+与后台交互的写法：
+
+var self = this; //一定不能少，否则then里面使用不了data里面返回的数据
+				this.$ajax.get(url).then(function(response) {
+					self.list = response.data;
+				}).catch(function(error) {
+					console.log(error);
+				});
+
+
+
+
+动态路由：
+配置路由地址
+path: '/news/newsDetail/:id',
+
+router-link里面：
+v-bind="{to:'/news/newsDetail/'+items.id}"
+
+取值：
+this.$route.params.id;
+
+
+
+
+
+
+
+//				axios.get(url)==this.http.get(url)
+//				response=>{}==function(response){}
+
